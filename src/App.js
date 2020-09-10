@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Form from './components/Form/Form'
+import AdList from './components/AdList/AdList';
+
+import Context from './context'
+
 function App() {
+  const [ads, setAds] = React.useState([]);
+
+  function addAd({ title, text, phone, city }) {
+    setAds([{ id: Math.floor(Math.random() * 10), title, text, phone, city }, ...ads]);
+  }
+
+  function removeAd(id) {
+    setAds(ads.filter((ad) => ad.id !== id));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context.Provider value={{ removeAd }}>
+      <div className="App">
+        <Form onCreate={addAd} />
+        <AdList ads={ads} />
+      </div>
+    </Context.Provider>
   );
 }
 

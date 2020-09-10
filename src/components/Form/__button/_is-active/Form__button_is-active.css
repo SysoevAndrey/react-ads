@@ -1,0 +1,9 @@
+.form__button_is-active {
+    opacity: 1;
+    cursor: pointer;
+    transition: .1s linear;
+}
+
+.form__button_is-active:hover {
+    opacity: .8;
+}

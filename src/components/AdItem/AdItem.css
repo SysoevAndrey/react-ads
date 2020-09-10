@@ -1,0 +1,15 @@
+@import url(./__title/AdItem__title.css);
+@import url(./__text/AdItem__text.css);
+@import url(./__phone/AdItem__phone.css);
+@import url(./__city/AdItem__city.css);
+
+.ad-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 0 20px;
+    border-radius: 10px;
+}
