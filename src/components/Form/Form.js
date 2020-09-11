@@ -1,4 +1,5 @@
 import React from 'react';
+import InputMask from 'react-input-mask';
 
 import './Form.css';
 
@@ -59,11 +60,12 @@ class Form extends React.Component {
           value={this.state.text}
           onChange={(evt) => this.setState({ text: evt.target.value }, () => this.checkInputValidity())}
           maxLength="300" />
-        <input className="form__input"
-          placeholder="Телефон"
-          value={this.state.phone}
-          onChange={(evt) => this.setState({ phone: evt.target.value }, () => this.checkInputValidity())}
-          required />
+        <InputMask mask="+7 (999) 999-99-99"
+        className="form__input"
+        placeholder="Телефон"
+        value={this.state.phone}
+        onChange={(evt) => this.setState({ phone: evt.target.value }, () => this.checkInputValidity())}
+        required  />
         <select className="form__input"
           value={this.state.city}
           onChange={(evt) => this.setState({ city: evt.target.value }, () => this.checkInputValidity())} >
