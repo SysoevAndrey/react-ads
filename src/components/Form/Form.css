@@ -1,7 +1,6 @@
 @import url(./__header/Form__header.css);
 @import url(./__input/Form__input.css);
 @import url(./__input/_textarea/Form__input_textarea.css);
-@import url(./__error/Form__error.css);
 @import url(./__button/Form__button.css);
 @import url(./__button/_is-active/Form__button_is-active.css);
 

@@ -14,10 +14,6 @@ function App() {
       text = 'Нет описания';
     }
 
-    if (!city) {
-      city = 'не указан';
-    }
-
     setAds([{ id: Math.floor(Math.random() * 10), title, text, phone, city }, ...ads]);
   }
 

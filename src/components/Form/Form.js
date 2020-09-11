@@ -10,10 +10,9 @@ class Form extends React.Component {
       title: '',
       text: '',
       phone: '',
-      city: '',
+      city: 'не указан',
       btnClass: 'form__button',
       submitting: null,
-      cities: ['Москва', 'Санкт-Петербург', 'Казань', 'Нижний Новгород'],
     };
 
     this.submitHandler = this.submitHandler.bind(this);
@@ -29,12 +28,14 @@ class Form extends React.Component {
       title: '',
       text: '',
       phone: '',
-      city: ''
+      city: 'не указан'
     });
+
+    this.setState({ btnClass: 'form__button', submitting: null });
   }
 
   checkInputValidity() {
-    if (this.state.title.length  && this.state.phone.length && (!this.state.city || this.state.cities.some((city) => city === this.state.city))) {
+    if (this.state.title.length && this.state.phone.length) {
       this.setState({ btnClass: 'form__button form__button_is-active', submitting: true });
     } else {
       this.setState({ btnClass: 'form__button', submitting: null });
@@ -53,24 +54,25 @@ class Form extends React.Component {
           onChange={(evt) => this.setState({ title: evt.target.value }, () => this.checkInputValidity())}
           maxLength="140"
           required />
-        <span className="form__error"></span>
         <textarea className="form__input form__input_textarea"
           placeholder="Текст объявления"
           value={this.state.text}
           onChange={(evt) => this.setState({ text: evt.target.value }, () => this.checkInputValidity())}
           maxLength="300" />
-        <span className="form__error"></span>
         <input className="form__input"
           placeholder="Телефон"
           value={this.state.phone}
           onChange={(evt) => this.setState({ phone: evt.target.value }, () => this.checkInputValidity())}
           required />
-        <span className="form__error"></span>
-        <input className="form__input"
-          placeholder="Город"
+        <select className="form__input"
           value={this.state.city}
-          onChange={(evt) => this.setState({ city: evt.target.value }, () => this.checkInputValidity())} />
-        <span className="form__error"></span>
+          onChange={(evt) => this.setState({ city: evt.target.value }, () => this.checkInputValidity())} >
+          <option value="не указан">Выбрать город</option>
+          <option value="Москва">Москва</option>
+          <option value="Санкт-Петербург">Санкт-Петербург</option>
+          <option value="Казань">Казань</option>
+          <option value="Нижний Новгород">Нижний Новгород</option>
+        </select>
         <button className={this.state.btnClass} disabled={this.state.submitting ? null : true}>Создать</button>
       </form>
     );
